@@ -40,3 +40,5 @@ object_for_init = class_for_init("Rajat",19)
 
 print("Name is " + object_for_init.name)
 print(object_for_init.age)
+
+1

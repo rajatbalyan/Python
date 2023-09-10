@@ -61,3 +61,35 @@ class MyClass:
 MyObject = MyClass()
 print(MyObject.class_var2)
 print(MyObject.class_var1)
+
+# Inheritance
+
+class inherit_parent_class:
+    def __init__ (self, fname, lname):
+        self.firstname = fname
+        self.lastname = lname
+
+    def print_name(self):
+        print(self.firstname, self.lastname)
+
+class inherit_child_class(inherit_parent_class):
+    pass
+
+object_of_icc = inherit_child_class("Inheritance", "Done")
+object_of_icc.print_name()
+
+# When __init__ function is put inside the child class, it will no longer will inherit the parent's __init__() function.
+# The child's __init__() function overrides the inheritance of the parent's __init__() function.
+# super() function will make the child class inherit all the methods and properties from its parent.
+
+class child_class(inherit_parent_class):
+    def __init__(self, fname, lname, year):
+        super().__init__(fname, lname)
+        self.currentyear = year
+
+    def welcome_msg(self):
+        print("Welcome", self.firstname, self. lastname, " to start your journey from ", self.currentyear)
+
+obj_of_cc = child_class("Rajat", "Balyan", 2023)
+obj_of_cc.welcome_msg()
+
