@@ -93,3 +93,154 @@ class child_class(inherit_parent_class):
 obj_of_cc = child_class("Rajat", "Balyan", 2023)
 obj_of_cc.welcome_msg()
 
+# Iterators
+# iter() method is used to get an iterator
+
+# print("")
+# print("Iterators")
+print("")
+
+mytuple1 = ("Item 1", "Item 2", "Item 3")
+myit1 = iter(mytuple1)
+
+print (next (myit1))
+print (next (myit1))
+print (next (myit1))
+
+mystr1 = "Banana"
+myit2 = iter(mystr1)
+
+# Method 1
+print (next(myit2))
+print (next(myit2))
+print (next(myit2))
+print (next(myit2))
+print (next(myit2))
+print (next(myit2))
+
+# Method 2
+# for x in mystr1:
+#     print (x)
+
+#Method 1 and Method 2, both gives the same output, i.e. prints all the characters of the string
+
+# --- Creating an iterator ---
+
+# To create an object/class as an iterator you have to implement the methods __iter__() and __next__() to your object.
+# The __iter__() method acts similar, you can do operations (initializing etc.), but must always return the iterator object itself.
+# The __next__() method also allows you to do operations, and must return the next item in the sequence.
+
+# print("")
+# print("Creating an iterator")
+print("")
+
+class myNums:
+    def __iter__(self):
+        self.a = 1
+        return self
+    
+    def __next__(self):
+        var1 = self.a
+        self.a += 1
+        return var1
+    
+myclass = myNums()
+myiter1 = iter(myclass)
+
+print(next(myiter1))
+print(next(myiter1))
+print(next(myiter1))
+
+#Stop Iteration
+# To prevent the iteration from going on forever, we can use the StopIteration statement.
+# In the __next__() method, we can add a terminating condition to raise an error if the iteration is done a specified number of times
+
+print("")
+
+class myNums2:
+    def __iter__(self):
+        self.a = 1
+        return self
+    
+    def __next__(self):
+        if self.a <=5:
+            var2 = self.a
+            self.a += 1
+
+            return var2
+        else:
+            raise StopIteration
+        
+myclass = myNums2()
+myiter2 = iter(myclass)
+
+for var2 in myiter2:
+    print(var2)
+
+#Polymorphism
+print("\nClass Polymorphism \n")
+
+class Car:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+    def move(self):
+        print("Drive!!")
+
+class Boat:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+    def move(self):
+        print("Sail!!")
+
+class Plane:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+    def move(self):
+        print("Fly!!")
+
+car1 = Car("Ford", "Mustang")           #Creating a Car class
+boat1 = Boat("Ibiza", "Toruing 20")     #Creating a Boat class
+plane1 = Plane('Boeing', '747')         #Creating a Plane class
+
+for rndmvar2 in (car1, boat1, plane1):
+    rndmvar2.move()
+
+#Inheritance Class Polymorphism
+print("\nInheritance Class Polymorphism \n")
+
+class Vehicle:
+    def __init__(self, brand, model):
+        self.brand = brand
+        self.model = model
+
+    def move(self):
+        print("Move!")
+
+class Car1(Vehicle):
+    pass
+
+class Boat1(Vehicle):
+    def move(self):
+        print("Sail!")
+
+class Plane1(Vehicle):
+    def move(self):
+        print("Fly!")
+
+
+car2 = Car1("Ford", "Mustang")           #Creating a Car class
+boat2 = Boat1("Ibiza", "Toruing 20")     #Creating a Boat class
+plane2 = Plane1('Boeing', '747')         #Creating a Plane class
+
+for rndmvar3 in (car2, boat2, plane2):
+    print(rndmvar3.brand)
+    print(rndmvar3.model)
+    rndmvar3.move()
+
+#Scope
