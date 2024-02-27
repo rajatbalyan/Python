@@ -243,4 +243,14 @@ for rndmvar3 in (car2, boat2, plane2):
     print(rndmvar3.model)
     rndmvar3.move()
 
-#Scope
+#Func inside another func
+print("")
+
+def myFunc1():
+    x=100
+    def myInnerFunc1():
+        print(x)
+    myInnerFunc1()
+
+myFunc1()
+

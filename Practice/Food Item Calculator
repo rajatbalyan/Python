@@ -1,0 +1,24 @@
+data = {
+    "Food Item": ["Apple", "Banana", "Orange", "Grape"],
+    "Min. Weight per piece (grams)": [70, 113, 80, 2],
+    "Max. Weight per piece (grams)": [100, 145, 175, 6]
+}
+
+# Function to calculate the number of food items based on total weight and weight range
+def calculate_quantity(food_item, total_weight):
+    min_weight, max_weight = data["Min. Weight per piece (grams)"][data["Food Item"].index(food_item)], \
+                           data["Max. Weight per piece (grams)"][data["Food Item"].index(food_item)]
+    
+    if total_weight < min_weight:
+        return 0
+    elif total_weight > max_weight:
+        return int(total_weight // max_weight)
+    else:
+        return int(total_weight // min_weight) + 1
+
+total_weight_apple = 1999
+total_weight_banana = 579
+num_apples = calculate_quantity("Apple", total_weight_apple)
+num_bananas = calculate_quantity("Banana", total_weight_banana)
+print(f"Number of apples for {total_weight_apple} grams: {num_apples}")
+print(f"Number of apples for {total_weight_banana} grams: {num_bananas}")
